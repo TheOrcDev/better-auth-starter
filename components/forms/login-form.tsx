@@ -31,6 +31,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { Badge } from "../ui/badge";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -41,6 +42,8 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const lastMethod = authClient.getLastUsedLoginMethod();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -88,7 +91,7 @@ export function LoginForm({
                 <div className="flex flex-col gap-4">
                   <Button
                     variant="outline"
-                    className="w-full"
+                    className="w-full relative"
                     type="button"
                     onClick={signInWithGoogle}
                   >
@@ -99,6 +102,11 @@ export function LoginForm({
                       />
                     </svg>
                     Login with Google
+                    {lastMethod === "google" && (
+                      <Badge className="absolute right-2 text-[9px]">
+                        last used
+                      </Badge>
+                    )}
                   </Button>
                 </div>
                 <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
@@ -113,7 +121,13 @@ export function LoginForm({
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <div className="flex items-center justify-between">
+                            <FormLabel>Email</FormLabel>
+
+                            {lastMethod === "email" && (
+                              <Badge className="text-[9px]">last used</Badge>
+                            )}
+                          </div>
                           <FormControl>
                             <Input placeholder="m@example.com" {...field} />
                           </FormControl>
