@@ -1,17 +1,17 @@
 "use client";
 
-import { User } from "@/db/schema";
-import { Button } from "./ui/button";
-import { useState } from "react";
 import { Loader2 } from "lucide-react";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+import type { User } from "@/db/schema";
 import { authClient } from "@/lib/auth-client";
+import { Button } from "./ui/button";
 
-interface AllUsersProps {
+type AllUsersProps = {
   users: User[];
   organizationId: string;
-}
+};
 
 export default function AllUsers({ users, organizationId }: AllUsersProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +23,7 @@ export default function AllUsers({ users, organizationId }: AllUsersProps) {
       const { error } = await authClient.organization.inviteMember({
         email: user.email,
         role: "member",
-        organizationId: organizationId,
+        organizationId,
       });
 
       if (error) {
@@ -48,8 +48,8 @@ export default function AllUsers({ users, organizationId }: AllUsersProps) {
         {users.map((user) => (
           <div key={user.id}>
             <Button
-              onClick={() => handleInviteMember(user)}
               disabled={isLoading}
+              onClick={() => handleInviteMember(user)}
             >
               {isLoading ? (
                 <Loader2 className="size-4 animate-spin" />

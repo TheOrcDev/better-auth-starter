@@ -7,12 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Member } from "@/db/schema";
+import type { Member } from "@/db/schema";
 import MembersTableAction from "./members-table-action";
 
-interface MembersTableProps {
+type MembersTableProps = {
   members: Member[];
-}
+};
 
 export default function MembersTable({ members }: MembersTableProps) {
   return (

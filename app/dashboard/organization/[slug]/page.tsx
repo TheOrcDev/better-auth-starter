@@ -12,10 +12,10 @@ export default async function OrganizationPage({ params }: { params: Params }) {
   const users = await getUsers(organization?.id || "");
 
   return (
-    <div className="flex flex-col gap-4 max-w-3xl mx-auto py-10">
-      <h1 className="text-2xl font-bold">{organization?.name}</h1>
+    <div className="mx-auto flex max-w-3xl flex-col gap-4 py-10">
+      <h1 className="font-bold text-2xl">{organization?.name}</h1>
       <MembersTable members={organization?.members || []} />
-      <AllUsers users={users} organizationId={organization?.id || ""} />
+      <AllUsers organizationId={organization?.id || ""} users={users} />
     </div>
   );
 }

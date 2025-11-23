@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import {
   Select,
   SelectContent,
@@ -7,13 +8,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Organization } from "@/db/schema";
+import type { Organization } from "@/db/schema";
 import { authClient } from "@/lib/auth-client";
-import { toast } from "sonner";
 
-interface OrganizationSwitcherProps {
+type OrganizationSwitcherProps = {
   organizations: Organization[];
-}
+};
 
 export function OrganizationSwitcher({
   organizations,

@@ -1,11 +1,11 @@
 "use client";
 
-import { removeMember } from "@/server/members";
-import { Button } from "./ui/button";
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { removeMember } from "@/server/members";
+import { Button } from "./ui/button";
 
 export default function MembersTableAction({ memberId }: { memberId: string }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -34,10 +34,10 @@ export default function MembersTableAction({ memberId }: { memberId: string }) {
 
   return (
     <Button
-      onClick={handleRemoveMember}
-      variant="destructive"
-      size="sm"
       disabled={isLoading}
+      onClick={handleRemoveMember}
+      size="sm"
+      variant="destructive"
     >
       {isLoading ? <Loader2 className="size-4 animate-spin" /> : "Remove"}
     </Button>
