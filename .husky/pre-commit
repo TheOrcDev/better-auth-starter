@@ -1,9 +1,6 @@
 echo '🪓🏗️👹 Preparing orc axes for the mighty project conquest! 👹🏗️🪓'
 echo 'Get ready for battle, this may take a while...'
 
-# Check Orcish Code Standards
-npx lint-staged
-
 pnpm check ||
 (
     echo "⚔️❌ Grargh, you have encountered an issue in your code. Check the orcish runes! ⚔️❌

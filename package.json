@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
     "prepare": "husky"
   },
   "dependencies": {
