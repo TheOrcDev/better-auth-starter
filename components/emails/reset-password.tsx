@@ -12,11 +12,11 @@ import {
   Text,
 } from "@react-email/components";
 
-type ForgotPasswordEmailProps = {
+interface ForgotPasswordEmailProps {
   username: string;
   resetUrl: string;
   userEmail: string;
-};
+}
 
 const ForgotPasswordEmail = (props: ForgotPasswordEmailProps) => {
   const { username, resetUrl, userEmail } = props;

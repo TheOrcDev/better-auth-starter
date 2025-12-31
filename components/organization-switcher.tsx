@@ -11,9 +11,9 @@ import {
 import type { Organization } from "@/db/schema";
 import { authClient } from "@/lib/auth-client";
 
-type OrganizationSwitcherProps = {
+interface OrganizationSwitcherProps {
   organizations: Organization[];
-};
+}
 
 export function OrganizationSwitcher({
   organizations,

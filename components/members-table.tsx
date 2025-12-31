@@ -10,9 +10,9 @@ import {
 import type { Member } from "@/db/schema";
 import MembersTableAction from "./members-table-action";
 
-type MembersTableProps = {
+interface MembersTableProps {
   members: Member[];
-};
+}
 
 export default function MembersTable({ members }: MembersTableProps) {
   return (

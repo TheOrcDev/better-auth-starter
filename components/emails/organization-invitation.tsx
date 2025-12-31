@@ -12,13 +12,13 @@ import {
   Text,
 } from "@react-email/components";
 
-type OrganizationInvitationEmailProps = {
+interface OrganizationInvitationEmailProps {
   email: string;
   invitedByUsername: string;
   invitedByEmail: string;
   teamName: string;
   inviteLink: string;
-};
+}
 
 const OrganizationInvitationEmail = (
   props: OrganizationInvitationEmailProps

@@ -8,10 +8,10 @@ import type { User } from "@/db/schema";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "./ui/button";
 
-type AllUsersProps = {
+interface AllUsersProps {
   users: User[];
   organizationId: string;
-};
+}
 
 export default function AllUsers({ users, organizationId }: AllUsersProps) {
   const [isLoading, setIsLoading] = useState(false);
